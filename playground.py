@@ -308,7 +308,7 @@ def interpolation_search_recursive(lis, target, low, high):
             return position
     return -1
 
-print(interpolation_search_recursive(ls, 336, 0, len(ls)-1))
+#print(interpolation_search_recursive(ls, 336, 0, len(ls)-1))
 
 def interpolation_search_iterative(lis, target):
     lis = sorted(lis)
@@ -330,6 +330,67 @@ def interpolation_search_iterative(lis, target):
             return position
     return -1
 
-print(interpolation_search_iterative(ls, 336))
+#print(interpolation_search_iterative(ls, 336))
 
 '''Sort: bubble sort, selection sort, insertion sort, merge sort, quick sort, heap sort, radix sort'''
+
+# bubble sort: time complexity is O(n^2) space complexity is O(1) as no additional memory space needed
+def bubble_sort(lis):
+    for i in range(len(lis)-1):
+        for j in range(len(lis)-i-1):
+            if lis[j] > lis[j+1]:
+                lis[j], lis[j+1] = lis[j+1], lis[j]
+    return lis
+
+#print(bubble_sort(ls))
+
+# selection sort: time complexity is O(n^2) as there are two nested for loops, space complexity is O(1) as extra memory used for temp variables
+def selection_sort(lis):
+    for i in range(len(lis)):
+        min_index = i
+        for j in range(i+1, len(lis)):
+            if lis[j] < lis[min_index]:
+                min_index = j
+        lis[i], lis[min_index] = lis[min_index], lis[i]
+    return lis
+
+#print(selection_sort(ls))
+
+# insertion sort: time complexity is O(n2) as there are two nested for loops, space complexity is O(1)
+def insertion_sort(lis):
+    pass
+
+
+# quick sort:
+
+# merge sort:
+
+'''You are given an array of size n-1 that contains distinct integers in the range from 1 to n. Identify and return missing element'''
+
+def missing_num(lis):
+    max_no = int(input('what is max element of your list? ' ))
+    range_lis = [x for x in range(1, max_no+1)]
+    missed = []
+    for i in range_lis:
+        if i not in lis:
+            missed.append(i)
+    return missed
+
+lister = [8, 2, 4, 5, 3, 7, 1]
+
+#print(missing_num(lister))
+
+'''Given an array of positive integers arr[], return second largest element, if it doesn't exist then return -1
+Input: arr[] = [12, 35, 1, 10, 34, 1] Output: 34
+Input: arr[] = [10, 10, 10] Output: -1'''
+
+# 2 ways: sort elements and return, or find element with minimum difference and return
+def second_largest(lis):
+    largest = lis[0]
+    for i in range(len(lis)):
+        if lis[i] > largest:
+            largest = lis[i]
+    return largest
+
+lss = [336,93,217,246,524,111,468]
+print(second_largest(lss))
